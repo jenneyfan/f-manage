@@ -1,6 +1,6 @@
 <template>
-    <div class="sidebar">
-        Sidebar
+    <div>
+        Table
     </div>
 </template>
 
@@ -9,7 +9,7 @@
         name: 'HelloWorld',
         data() {
             return {
-                msg: 'Sidebar'
+                msg: 'Welcome to Your Vue.js App'
             }
         }
     }
