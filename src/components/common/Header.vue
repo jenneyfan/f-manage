@@ -7,7 +7,18 @@
         <div class="logo">后台管理系统</div>
         <div class="header-right">
             <div class="header-user-con">
-
+                <div class="user-avator"><img src="static/img/img.jpg"></div>
+                <el-dropdown class="user-name">
+                    <span class="el-dropdown-link">
+                        {{name}} <i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                        <a href="https://github.com/jenneyfan/f-manage" target="_blank">
+                            <el-dropdown-item>项目仓库</el-dropdown-item>
+                        </a>
+                        <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
             </div>
         </div>
     </div>
@@ -15,10 +26,17 @@
 
 <script>
     export default {
-        name: 'HelloWorld',
         data() {
             return {
-                msg: 'Header'
+                collapse:false,
+                username:'Jenney',
+                message:2
+            }
+        },
+        computed:{
+            name(){
+                let name = localStorage.getItem('name');
+                return name = name ? name : this.username;
             }
         }
     }
