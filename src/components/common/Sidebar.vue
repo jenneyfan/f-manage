@@ -1,88 +1,45 @@
 <template>
     <div class="sidebar">
         <el-tree
+                accordion
                 node-key="id"
+                current-node-key="1"
                 :data="data"
                 :props="defaultProps"
                 :default-expanded-keys="['1','2','3']"
-                accordion
                 @node-click="handleNodeClick">
+                <span class="custom-tree-node" slot-scope="{ node, data }">
+                    <i :class="data.icon"></i>
+                    <span>{{data.label}}</span>
+                </span>
         </el-tree>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         data() {
             return {
-                data: [{
-                    id:'1',
-                    label: '一级 1',
-                    url:'url1',
-                    children: [{
-                        id:'11',
-                        label: '二级 1-1',
-                        url:'url1-1',
-                        children: [{
-                            id:'111',
-                            label: '三级 1-1-1',
-                            url:'url1-1-1',
-                        }]
-                    }]
-                }, {
-                    id:'2',
-                    label: '一级 2',
-                    children: [{
-                        label: '二级 2-1',
-                        id:'21',
-                        url:'url2-1',
-                        children: [{
-                            id:'211',
-                            label: '三级 2-1-1',
-                            url:'url2-1-1',
-                        }]
-                    }, {
-                        id:'22',
-                        label: '二级 2-2',
-                        url:'url2-2',
-                        children: [{
-                            id:'221',
-                            label: '三级 2-2-1',
-                            url:'url2-2-1'
-                        }]
-                    }]
-                }, {
-                    id:'3',
-                    label: '一级 3',
-                    children: [{
-                        id:'31',
-                        label: '二级 3-1',
-                        url:'url3-1',
-                        children: [{
-                            id:'311',
-                            label: '三级 3-1-1',
-                            url:'url3-3-1',
-                        }]
-                    }, {
-                        id:'32',
-                        label: '二级 3-2',
-                        url:'url3-2',
-                        children: [{
-                            id:'321',
-                            label: '三级 3-2-1',
-                            url:'url3-2-1',
-                        }]
-                    }]
-                }],
+                data: [],
                 defaultProps: {
                     children: 'children',
                     label: 'label'
                 }
             };
         },
+        mounted(){
+            this.getMenu();
+        },
         methods: {
+            getMenu(){
+                axios.get('/static/mock/menu.json').then((res)=>{
+                    let menuData = res.data.result;
+                    this.data = menuData;
+                })
+            },
             handleNodeClick(data) {
-                console.log(data);
+                this.$router.push(data.url);
             }
         }
     };
@@ -110,11 +67,13 @@
         background: #324157;
     }
     .sidebar .el-tree-node__content{
-        height: 40px;
-        color: #FFF;
+        height: 50px;
+        color: #BFCBD9;
+        font-size: 14px;
         transition: all ease 0.4s;
     }
     .el-tree-node:focus>.el-tree-node__content,.sidebar .el-tree-node__content:hover{
         background: #283446;
+        color: #20A0FF;
     }
 </style>
