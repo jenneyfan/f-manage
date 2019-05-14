@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'HelloWorld',
+        name: 'tab选项卡',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App'

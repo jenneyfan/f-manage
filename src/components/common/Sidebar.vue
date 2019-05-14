@@ -76,4 +76,8 @@
         background: #283446;
         color: #20A0FF;
     }
+    .el-tree-node i[class*=" el-icon-"], .el-tree-node i[class^="el-icon-"]{
+        margin-right: 5px;
+        font-size: 16px;
+    }
 </style>

@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'HelloWorld',
+        name: '基础表格',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App'
