@@ -1,12 +1,13 @@
 <template>
     <div class="sidebar">
         <el-tree
+                ref="tree"
                 accordion
                 node-key="id"
                 current-node-key="1"
                 :data="data"
+                :default-active="onRoutes"
                 :props="defaultProps"
-                :default-expanded-keys="['1','2','3']"
                 @node-click="handleNodeClick">
                 <span class="custom-tree-node" slot-scope="{ node, data }">
                     <i :class="data.icon"></i>
@@ -18,9 +19,11 @@
 
 <script>
     import axios from 'axios'
+    import bus from '../common/bus'
     export default {
         data() {
             return {
+                collapse: false,
                 data: [],
                 defaultProps: {
                     children: 'children',
@@ -41,6 +44,23 @@
             handleNodeClick(data) {
                 this.$router.push(data.url);
             }
+        },
+        computed:{
+            onRoutes(){
+                return this.$route.path.replace('/','');
+            }
+        },
+        created(){
+            bus.$on('collapse', msg=>{
+                this.collapse = msg;
+            })
+        },
+        updated() {
+            this.$nextTick(function () {
+                let path = this.$route.path;
+                let item = this.data.filter(item => path == item.url);
+                this.$refs.tree.setCurrentKey(item[0].id);
+            })
         }
     };
 </script>
@@ -72,9 +92,9 @@
         font-size: 14px;
         transition: all ease 0.4s;
     }
-    .el-tree-node:focus>.el-tree-node__content,.sidebar .el-tree-node__content:hover{
+    .el-tree-node:focus>.el-tree-node__content,.sidebar .el-tree-node__content:hover, .is-current>.el-tree-node__content{
         background: #283446;
-        color: #20A0FF;
+        color: #20A0FF !important;
     }
     .el-tree-node i[class*=" el-icon-"], .el-tree-node i[class^="el-icon-"]{
         margin-right: 5px;
