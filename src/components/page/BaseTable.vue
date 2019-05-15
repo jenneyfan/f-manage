@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: '基础表格',
+        name:'basetable',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App'

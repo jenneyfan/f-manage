@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: '基本表单',
+        name:'baseform',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App'

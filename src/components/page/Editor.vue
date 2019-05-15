@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: '富文本编辑',
+        name:'editor',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App'

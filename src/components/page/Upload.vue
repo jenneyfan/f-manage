@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: '文件上传',
+        name: 'upload',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App'

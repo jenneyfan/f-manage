@@ -2,9 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 const Home = ()=> import('../components/common/Home');
 const Dashboard = ()=> import('../components/page/Dashboard');
-const Table = ()=> import('../components/page/Table');
+const BaseTable = ()=> import('../components/page/BaseTable');
 const Tabs = ()=> import('../components/page/Tabs');
-const Form = ()=> import('../components/page/Form');
+const BaseForm = ()=> import('../components/page/BaseForm');
 const Editor = ()=> import('../components/page/Editor');
 const Markdown = ()=> import('../components/page/Markdown');
 const Upload = ()=> import('../components/page/Upload');
@@ -16,39 +16,48 @@ export default new Router({
     routes:[
         {
             path:'/',
-            redirect:'/dashboard'
+            redirect:'/dashboard',
+            meta:{title:'管理首页'}
         },
         {
             path:'/',
             component:Home,
+            meta:{title:'管理首页'},
             children:[
                 {
                     path:'/dashboard',
-                    component:Dashboard
+                    component:Dashboard,
+                    meta:{title:'管理首页'},
                 },
                 {
                     path:'/table',
-                    component:Table
+                    component:BaseTable,
+                    meta:{title:'基础表格'}
                 },
                 {
                     path:'/tabs',
-                    component:Tabs
+                    component:Tabs,
+                    meta: { title: 'tab选项卡' }
                 },
                 {
                     path:'/form',
-                    component:Form
+                    component:BaseForm,
+                    meta: { title: '基本表单' }
                 },
                 {
                     path:'/editor',
-                    component:Editor
+                    component:Editor,
+                    meta: { title: '富文本编辑器' }
                 },
                 {
                     path:'/markdown',
-                    component:Markdown
+                    component:Markdown,
+                    meta: { title: 'markdown编辑器' }
                 },
                 {
                     path:'/upload',
-                    component:Upload
+                    component:Upload,
+                    meta: { title: '文件上传' }
                 }
             ]
         }

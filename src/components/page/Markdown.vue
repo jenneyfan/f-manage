@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'Markdown编辑器',
+        name:'markdown',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App'

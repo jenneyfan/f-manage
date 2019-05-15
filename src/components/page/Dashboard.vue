@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: '管理首页',
+        name:'dashboard',
         data() {
             return {
                 msg: 'Dashboard'

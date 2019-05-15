@@ -12,11 +12,11 @@
             <el-dropdown @command="handleTags">
                 <el-button size="mini" type="primary">
                     标签选项<i class="el-icon-arrow-down el-icon--right"></i>
-                    <el-dropdown-menu size="small" slot="dropdown">
-                        <el-dropdown-item command="other">关闭其它</el-dropdown-item>
-                        <el-dropdown-item command="all">关闭所有</el-dropdown-item>
-                    </el-dropdown-menu>
                 </el-button>
+                <el-dropdown-menu size="small" slot="dropdown">
+                    <el-dropdown-item command="other">关闭其他</el-dropdown-item>
+                    <el-dropdown-item command="all">关闭所有</el-dropdown-item>
+                </el-dropdown-menu>
             </el-dropdown>
         </div>
     </div>
@@ -24,17 +24,14 @@
 
 <script>
     import bus from './bus'
-
     export default {
-        components: {},
-        name: 'HelloWorld',
         data() {
             return {
                 tagsList:[]
             }
         },
         created(){
-
+            this.setTags(this.$route)
         },
         methods:{
             isActive(path){
@@ -57,21 +54,19 @@
             },
             // 关闭其它标签
             closeOther(){
-                const curItem = this.tagsList.filter((item)=>{
-                    return item.path === this.$router.fullPath;
+                const curItem = this.tagsList.filter(item => {
+                    return item.path === this.$route.fullPath;
                 });
                 this.tagsList = curItem;
             },
             // 设置标签
             setTags(route){
-                console.log(route.matched[1].components);
-                const isExist = this.tagsList.some((item)=>{
+                const isExist = this.tagsList.some(item => {
                     return item.path === route.fullPath;
                 });
                 !isExist && this.tagsList.push({
                     title:route.meta.title,
-                    path:route.fullPath,
-                    name:route.matched[1].components.default.name
+                    path:route.fullPath
                 });
                 bus.$emit('tags',this.tagsList);
             },
@@ -92,7 +87,6 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     .tags {
         position: relative;
@@ -164,4 +158,3 @@
     }
 
 </style>
-
