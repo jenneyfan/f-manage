@@ -24,22 +24,22 @@
       "url":"/form",
       "children": [
         {
-          "id": "4-1",
+          "id": "41",
           "label":"基本表单",
           "url":"/form"
         },
         {
-          "id": "4-2",
+          "id": "42",
           "label":"富文本编辑器",
           "url":"/editor"
         },
         {
-          "id": "4-3",
+          "id": "43",
           "label":"markdown编辑器",
           "url":"/markdown"
         },
         {
-          "id":"4-4",
+          "id":"44",
           "label":"文件上传",
           "url":"/upload"
         }

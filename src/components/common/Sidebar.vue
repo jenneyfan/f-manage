@@ -58,8 +58,22 @@
         updated() {
             this.$nextTick(function () {
                 let path = this.$route.path;
-                let item = this.data.filter(item => path == item.url);
-                this.$refs.tree.setCurrentKey(item[0].id);
+                let currentId = '1';
+                function getItem(arr,attr,schKey) {
+                    for (var i = 0; i < arr.length; i++){
+                        if(arr[i][attr]==schKey){
+                            currentId = arr[i].id;
+                            return currentId;
+                            break;
+                        }else{
+                            if(arr[i].children){
+                                getItem(arr[i].children,attr,schKey);
+                            }
+                        }
+                    }
+                }
+                getItem(this.data,'url',path);
+                this.$refs.tree.setCurrentKey(currentId);
             })
         }
     };
