@@ -73,8 +73,12 @@
                     }
                 }
                 getItem(this.data,'url',path);
-                this.$refs.tree.setCurrentKey(currentId);
-            })
+                let tree = this.$refs.tree;
+                tree.setCurrentKey(currentId);
+                if(tree.store.currentNode.level > 1){
+                    tree.store.currentNode.parent.expanded = true;
+                }
+            });
         }
     };
 </script>

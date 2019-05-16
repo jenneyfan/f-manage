@@ -18,7 +18,7 @@
       "url":"/tabs",
       "icon":"el-icon-message"
     },{
-      "index":"4",
+      "id":"4",
       "label":"表单相关",
       "icon":"el-icon-date",
       "url":"/form",
