@@ -78,7 +78,7 @@
                         }
                     }
                     if(!isDel){
-                        if(item.address.indexOf(this.selectCate) > -1 && (item.name.indexOf(this.selectWord) > -1) || item.address.indexOf(this.selectWord) > -1){
+                        if(item.address.indexOf(this.selectCate) > -1 && (item.name.indexOf(this.selectWord) > -1 || item.address.indexOf(this.selectWord) > -1)) {
                             return item;
                         }
                     }
