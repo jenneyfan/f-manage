@@ -14,11 +14,8 @@
                     <el-form-item label="活动名称" prop="name">
                         <el-input v-model="form.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="活动区域" prop="region">
-                        <el-select v-model="form.region" placeholder="请选择">
-                            <el-option value="shanghai" label="区域一"></el-option>
-                            <el-option value="beijing" label="区域二"></el-option>
-                        </el-select>
+                    <el-form-item label="活动区域" prop="options">
+                        <el-cascader :options="options" v-model="form.options"></el-cascader>
                     </el-form-item>
                     <el-form-item label="活动时间" required>
                         <el-col :span="11">
@@ -138,7 +135,7 @@
                         {required:true, message:'请输入活动名称',trigger:'blur'},
                         {min:3, max:5, message:'长度在 3 到 5 个字符',trigger:'blur'}
                     ],
-                    region:[
+                    options:[
                         {required:true, message:'请选择活动区域',trigger:'change'}
                     ],
                     date1:[
