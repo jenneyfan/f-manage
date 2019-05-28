@@ -8,6 +8,7 @@ const BaseForm = ()=> import('../components/page/BaseForm');
 const Editor = ()=> import('../components/page/Editor');
 const Markdown = ()=> import('../components/page/Markdown');
 const Upload = ()=> import('../components/page/Upload');
+const DragList = ()=> import('../components/page/DragList');
 
 Vue.use(Router);
 
@@ -58,6 +59,11 @@ export default new Router({
                     path:'/upload',
                     component:Upload,
                     meta: { title: '文件上传' }
+                },
+                {
+                    path:'/draglist',
+                    component:DragList,
+                    meta: { title: '拖拽列表' }
                 }
             ]
         }

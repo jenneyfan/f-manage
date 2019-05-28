@@ -44,6 +44,11 @@
           "url":"/upload"
         }
       ]
+    },{
+      "id":"5",
+      "label":"拖拽列表",
+      "url":"/draglist",
+      "icon":"el-icon-rank"
     }
   ]
 
