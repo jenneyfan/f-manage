@@ -49,6 +49,16 @@
       "label":"拖拽列表",
       "url":"/draglist",
       "icon":"el-icon-rank"
+    },{
+      "id":"6",
+      "label":"权限测试",
+      "url":"/permission",
+      "icon":"el-icon-warning"
+    },{
+      "id":"7",
+      "label":"404页面",
+      "url":"/404",
+      "icon":"el-icon-error"
     }
   ]
 

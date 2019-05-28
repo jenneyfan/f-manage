@@ -9,6 +9,10 @@ const Editor = ()=> import('../components/page/Editor');
 const Markdown = ()=> import('../components/page/Markdown');
 const Upload = ()=> import('../components/page/Upload');
 const DragList = ()=> import('../components/page/DragList');
+const Permission = ()=> import('../components/page/Permission');
+const Login = ()=> import('../components/page/Login');
+const Page403 = ()=> import('../components/page/403');
+const Page404 = ()=> import('../components/page/404');
 
 Vue.use(Router);
 
@@ -64,8 +68,29 @@ export default new Router({
                     path:'/draglist',
                     component:DragList,
                     meta: { title: '拖拽列表' }
+                },
+                {
+                    path:'/permission',
+                    component:Permission,
+                    meta: { title: '权限测试' }
                 }
             ]
+        },
+        {
+            path:'/login',
+            component:Login
+        },
+        {
+            path:'/403',
+            component:Page403
+        },
+        {
+            path:'/404',
+            component:Page404
+        },
+        {
+            path:'*',
+            redirect:'/404'
         }
     ]
 })
