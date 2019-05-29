@@ -8,7 +8,7 @@
         <div class="header-right">
             <div class="header-user-con">
                 <div class="user-avator"><img src="static/img/img.jpg"></div>
-                <el-dropdown class="user-name">
+                <el-dropdown class="user-name" @command="handleCommand">
                     <span class="el-dropdown-link">
                         {{name}} <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
@@ -37,6 +37,14 @@
             name(){
                 let name = localStorage.getItem('name');
                 return name = name ? name : this.username;
+            }
+        },
+        methods:{
+            handleCommand(command){
+                if(command == 'logout'){
+                    localStorage.removeItem('username');
+                    this.$router.push('/login');
+                }
             }
         }
     }
