@@ -111,7 +111,7 @@
         transition: all ease 0.4s;
     }
     .el-tree-node:focus>.el-tree-node__content,.sidebar .el-tree-node__content:hover, .is-current>.el-tree-node__content{
-        background: #283446;
+        background: #283446 !important;
         color: #20A0FF !important;
     }
     .el-tree-node i[class*=" el-icon-"], .el-tree-node i[class^="el-icon-"]{
