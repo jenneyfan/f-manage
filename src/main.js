@@ -12,7 +12,6 @@ Vue.config.productionTip = false;
 
 router.beforeEach((to,from,next)=>{
     const role = localStorage.getItem('username');
-    console.log(to,from);
     if(!role && to.path !== '/login'){
         next('/login');
     }else if(to.meta.title == '权限测试'){

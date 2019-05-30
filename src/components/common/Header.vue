@@ -7,6 +7,19 @@
         <div class="logo">后台管理系统</div>
         <div class="header-right">
             <div class="header-user-con">
+                <div class="btn-fullscreen" @click="handleFullScreen">
+                    <el-tooltip effect="dark" :content="fullscreen ? `取消全屏` : `全屏`">
+                        <i class="el-icon-rank"></i>
+                    </el-tooltip>
+                </div>
+                <div class="btn-bell">
+                    <el-tooltip effect="dark" :content="message?`有${message}条未读消息`:`消息中心`" placement="bottom">
+                        <router-link to="/tabs">
+                            <i class="el-icon-bell"></i>
+                        </router-link>
+                    </el-tooltip>
+                    <span class="btn-bell-badge" v-if="message"></span>
+                </div>
                 <div class="user-avator"><img src="static/img/img.jpg"></div>
                 <el-dropdown class="user-name" @command="handleCommand">
                     <span class="el-dropdown-link">
@@ -30,12 +43,13 @@
             return {
                 collapse:false,
                 username:'Jenney',
-                message:2
+                message:2,
+                fullscreen:false
             }
         },
         computed:{
             name(){
-                let name = localStorage.getItem('name');
+                let name = localStorage.getItem('username');
                 return name = name ? name : this.username;
             }
         },
@@ -45,6 +59,32 @@
                     localStorage.removeItem('username');
                     this.$router.push('/login');
                 }
+            },
+            handleFullScreen(){
+                let element = document.documentElement;
+                if(this.fullscreen){
+                    if(document.exitFullscreen){
+                        document.exitFullscreen();
+                    }else if(document.webkitCancelFullScreen){
+                        document.webkitCancelFullScreen();
+                    }else if(document.mozCancelFullScreen){
+                        document.mozCancelFullScreen();
+                    }else if(document.msExitFullScreen){
+                        document.msExitFullScreen();
+                    }
+                }
+                else {
+                    if(element.requestFullscreen){
+                        element.requestFullscreen()
+                    }else if(element.webkitRequestFullScreen){
+                        element.webkitRequestFullScreen()
+                    }else if(element.mozRequestFullScreen){
+                        element.mozRequestFullScreen()
+                    }else if(element.msRequestFullScreen){
+                        element.msRequestFullScreen()
+                    }
+                }
+                this.fullscreen = !this.fullscreen;
             }
         }
     }
