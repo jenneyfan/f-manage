@@ -13,12 +13,12 @@
                     </el-tooltip>
                 </div>
                 <div class="btn-bell">
-                    <el-tooltip effect="dark" :content="message?`有${message}条未读消息`:`消息中心`" placement="bottom">
+                    <el-tooltip effect="dark" :content="msgCount?`有${msgCount}条未读消息`:`消息中心`" placement="bottom">
                         <router-link to="/tabs">
                             <i class="el-icon-bell"></i>
                         </router-link>
                     </el-tooltip>
-                    <span class="btn-bell-badge" v-if="message"></span>
+                    <span class="btn-bell-badge" v-if="msgCount"></span>
                 </div>
                 <div class="user-avator"><img src="static/img/img.jpg"></div>
                 <el-dropdown class="user-name" @command="handleCommand">
@@ -38,12 +38,12 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     export default {
         data() {
             return {
                 collapse:false,
                 username:'Jenney',
-                message:2,
                 fullscreen:false
             }
         },
@@ -51,7 +51,8 @@
             name(){
                 let name = localStorage.getItem('username');
                 return name = name ? name : this.username;
-            }
+            },
+            ...mapState(['msgCount'])
         },
         methods:{
             handleCommand(command){

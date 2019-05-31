@@ -3,12 +3,24 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuex from 'vuex'
 import 'babel-polyfill'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+Vue.use(Vuex);
 Vue.use(ElementUI,{size:'small'});
 Vue.config.productionTip = false;
+
+const store = new Vuex.Store({
+    state:{
+        msgCount:2
+    },
+    mutations:{
+        updateMsgCount(state,msgCount){
+            state.msgCount = msgCount;
+        }
+    }
+});
 
 router.beforeEach((to,from,next)=>{
     const role = localStorage.getItem('username');
@@ -25,13 +37,14 @@ router.beforeEach((to,from,next)=>{
             next();
         }
     }
-})
+});
 
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
+    el: '#app',
+    store,
+    router,
+    components: { App },
+    template: '<App/>'
+});

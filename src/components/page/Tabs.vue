@@ -73,6 +73,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     export default {
         components: {},
         name:'tabs',
@@ -99,9 +100,16 @@
                 }
             }
         },
+        mounted(){
+            this.getMsgCount();
+        },
+        computed:{
+            ...mapState(['msgCount'])
+        },
         methods:{
             handleRead(idx){
                 this.changeArr('unread','read',idx);
+                this.$store.commit('updateMsgCount', this.list.unread.length);
             },
             handleDel(idx){
                 this.changeArr('read','recycle',idx);
@@ -111,6 +119,7 @@
             },
             handleReadAll(){
                 this.concatArr('unread','read');
+                this.$store.commit('updateMsgCount', 0);
             },
             handleDelAll(){
                 this.concatArr('read','recycle');
@@ -125,6 +134,9 @@
             concatArr(arr1,arr2){
                 this.list[arr2] = this.list[arr1].concat(this.list[arr2]);
                 this.list[arr1] = [];
+            },
+            getMsgCount(){
+                 this.$store.commit('updateMsgCount', this.list.unread.length);
             }
         }
     }
