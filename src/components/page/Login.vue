@@ -19,6 +19,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         components: {},
         name: 'HelloWorld',
@@ -41,11 +42,29 @@
         methods:{
             submitForm(formName){
                 this.$refs[formName].validate((valid)=>{
+                    let _this = this;
                     if(valid){
-                        localStorage.setItem('username',this.ruleForm.username);
-                        this.$router.push('/');
+                        axios.get('/static/mock/user.json').then((res)=>{
+                            let data = res.data.result;
+                            if(res.status == 200){
+                                let result = data.find((item)=>{
+                                    return item.username == _this.ruleForm.username;
+                                });
+                                if(result){
+                                    if(result.password == _this.ruleForm.password){
+                                        localStorage.setItem('username',this.ruleForm.username);
+                                        this.$router.push('/');
+                                    }else{
+                                        this.$message.error('密码错误，请重新输入');
+                                    }
+                                }else {
+                                    this.$message.error('请检查用户名是否正确');
+                                }
+                            }else{
+                                this.$message.error('服务器错误');
+                            }
+                        });
                     }else{
-                        console.log('error submit');
                         return false;
                     }
                 })
