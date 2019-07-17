@@ -51,11 +51,16 @@
       "icon":"el-icon-rank"
     },{
       "id":"6",
+      "label":"Echarts图表",
+      "url":"/echarts",
+      "icon":"el-icon-pie-chart"
+    },{
+      "id":"7",
       "label":"权限测试",
       "url":"/permission",
       "icon":"el-icon-warning"
     },{
-      "id":"7",
+      "id":"8",
       "label":"404页面",
       "url":"/404",
       "icon":"el-icon-error"
