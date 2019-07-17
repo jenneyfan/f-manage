@@ -76,7 +76,7 @@
         name:'basetable',
         data() {
             return {
-                url: '/static/mock/vuetable.json',
+                url: 'https://easy-mock.com/mock/5b92369add287013d019e24f/example/table',
                 tableData:[],
                 curPage:1,
                 multipleSelection: [],
