@@ -1,6 +1,6 @@
 # f-manage
 
-> A Vue.js project
+> vue后台管理系统 ，技术栈 vue2.0 + elementUi +vuex + vue-router + es6
 
 ## Build Setup
 
