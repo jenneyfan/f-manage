@@ -18,7 +18,7 @@ const Page404 = ()=> import('../components/page/404');
 Vue.use(Router);
 
 export default new Router({
-    mode:'history',
+    mode:'hash',
     routes:[
         {
             path:'/',
