@@ -36,7 +36,7 @@
         },
         methods: {
             getMenu(){
-                axios.get('/static/mock/menu.json').then((res)=>{
+                axios.get('https://easy-mock.com/mock/5b92369add287013d019e24f/example/menu').then((res)=>{
                     let menuData = res.data.result;
                     this.data = menuData;
                 })

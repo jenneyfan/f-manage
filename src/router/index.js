@@ -10,6 +10,7 @@ const Markdown = ()=> import('../components/page/Markdown');
 const Upload = ()=> import('../components/page/Upload');
 const DragList = ()=> import('../components/page/DragList');
 const Permission = ()=> import('../components/page/Permission');
+const Echarts = ()=> import('../components/page/Echarts');
 const Login = ()=> import('../components/page/Login');
 const Page403 = ()=> import('../components/page/403');
 const Page404 = ()=> import('../components/page/404');
@@ -17,7 +18,7 @@ const Page404 = ()=> import('../components/page/404');
 Vue.use(Router);
 
 export default new Router({
-    mode:'history',
+    mode:'hash',
     routes:[
         {
             path:'/',
@@ -68,6 +69,11 @@ export default new Router({
                     path:'/draglist',
                     component:DragList,
                     meta: { title: '拖拽列表' }
+                },
+                {
+                    path:'/echarts',
+                    component:Echarts,
+                    meta: { title: 'Echarts图表' }
                 },
                 {
                     path:'/permission',

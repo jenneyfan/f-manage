@@ -1,0 +1,18 @@
+{
+  "status":0,
+  "msg":"成功",
+  "result":[
+    {
+      "id":"10001",
+      "username":"admin",
+      "password":"123456",
+      "role":"超级管理员"
+    },
+    {
+      "id":"10002",
+      "username":"Jenney",
+      "password":"123456",
+      "role":"普通用户"
+    }
+  ]
+}

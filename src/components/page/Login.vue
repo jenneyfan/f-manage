@@ -44,7 +44,7 @@
                 this.$refs[formName].validate((valid)=>{
                     let _this = this;
                     if(valid){
-                        axios.get('/static/mock/user.json').then((res)=>{
+                        axios.get('https://easy-mock.com/mock/5b92369add287013d019e24f/example/user').then((res)=>{
                             let data = res.data.result;
                             if(res.status == 200){
                                 let result = data.find((item)=>{

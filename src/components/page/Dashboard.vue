@@ -107,7 +107,7 @@
         },
         methods:{
             getList(){
-                axios.get('/static/mock/task.json').then((res)=>{
+                axios.get('https://easy-mock.com/mock/5b92369add287013d019e24f/example/task').then((res)=>{
                     let listData = res.data.result;
                     this.todoList = listData;
                 })
