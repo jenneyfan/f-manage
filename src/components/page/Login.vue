@@ -12,7 +12,7 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
                 </div>
-                <p style="font-size:12px;line-height:30px;color:#999;">Tips : 用户名和密码随便填。</p>
+                <p style="font-size:12px;line-height:30px;color:#999;">Tips : 用户名:admin/Jenney，密码：123456</p>
             </el-form>
         </div>
     </div>
@@ -27,7 +27,7 @@
             return {
                 ruleForm:{
                     username:'admin',
-                    password:'123123'
+                    password:'123456'
                 },
                 rules:{
                     username:[
@@ -52,8 +52,9 @@
                                 });
                                 if(result){
                                     if(result.password == _this.ruleForm.password){
-                                        localStorage.setItem('username',this.ruleForm.username);
+                                        localStorage.setItem('username',result.username);
                                         this.$router.push('/');
+                                        this.getUserInfo(result);
                                     }else{
                                         this.$message.error('密码错误，请重新输入');
                                     }
@@ -68,6 +69,10 @@
                         return false;
                     }
                 })
+            },
+            getUserInfo(loginMsg){
+              this.$store.commit('updateUserName',loginMsg.username);
+              this.$store.commit('updateUserRole',loginMsg.role);
             }
         }
     }

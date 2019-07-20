@@ -8,7 +8,7 @@
                             <div class="user-info">
                                 <img src="static/img/img.jpg" class="user-avator" alt="">
                                 <div class="user-info-cont">
-                                    <div class="user-info-name">{{name}}</div>
+                                    <div class="user-info-name">{{user}}</div>
                                     <div>{{role}}</div>
                                 </div>
                             </div>
@@ -92,18 +92,20 @@
 
 <script>
     import axios from 'axios'
+    import {mapState} from 'vuex'
     export default {
         components: {},
         name:'dashboard',
         data() {
             return {
-                name: 'Jenney',
-                role:'系统管理员',
                 todoList:[]
             }
         },
         mounted(){
             this.getList();
+        },
+        computed:{
+            ...mapState(['user','role'])
         },
         methods:{
             getList(){

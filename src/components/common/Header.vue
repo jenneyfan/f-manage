@@ -23,7 +23,7 @@
                 <div class="user-avator"><img src="static/img/img.jpg"></div>
                 <el-dropdown class="user-name" @command="handleCommand">
                     <span class="el-dropdown-link">
-                        {{name}} <i class="el-icon-arrow-down el-icon--right"></i>
+                        {{user}} <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
                         <a href="https://github.com/jenneyfan/f-manage" target="_blank">
@@ -43,16 +43,11 @@
         data() {
             return {
                 collapse:false,
-                username:'Jenney',
                 fullscreen:false
             }
         },
         computed:{
-            name(){
-                let name = localStorage.getItem('username');
-                return name = name ? name : this.username;
-            },
-            ...mapState(['msgCount'])
+            ...mapState(['msgCount','user'])
         },
         methods:{
             handleCommand(command){

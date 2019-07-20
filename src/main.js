@@ -13,9 +13,17 @@ Vue.config.productionTip = false;
 
 const store = new Vuex.Store({
     state:{
+        user:'admin',
+        role:'系统管理员',
         msgCount:2
     },
     mutations:{
+        updateUserName(state,user){
+            state.user = user;
+        },
+        updateUserRole(state,role){
+            state.role = role;
+        },
         updateMsgCount(state,msgCount){
             state.msgCount = msgCount;
         }
