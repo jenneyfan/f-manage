@@ -13,7 +13,7 @@
                                 </div>
                             </div>
                             <div class="user-info-list">上次登录时间：<span>2018-01-01</span></div>
-                            <div class="user-info-list">上次登录地点：<span>东莞</span></div>
+                            <div class="user-info-list">上次登录地点：<span>{{LocationCity}}</span></div>
                         </el-card>
                         <el-card shadow="hover">
                             <div slot="header" class="clearfix">
@@ -98,11 +98,13 @@
         name:'dashboard',
         data() {
             return {
-                todoList:[]
+                todoList:[],
+                LocationCity:'正在定位'
             }
         },
         mounted(){
             this.getList();
+            this.getCity();
         },
         computed:{
             ...mapState(['user','role'])
@@ -113,6 +115,17 @@
                     let listData = res.data.result;
                     this.todoList = listData;
                 })
+            },
+            getCity(){
+                const geolocation = new BMap.Geolocation();
+                let _this = this;
+                geolocation.getCurrentPosition((position)=>{
+                    let city = position.address.city;
+                    let province = position.address.province;
+                    _this.LocationCity = province + city;
+                }, function(e) {
+                    _this.LocationCity = "定位失败"
+                }, {provider: 'baidu'});
             }
         }
     }
@@ -208,7 +221,7 @@
     }
 
     .user-info-list span {
-        margin-left: 70px;
+        margin-left: 50px;
     }
 
     .mgb20 {
