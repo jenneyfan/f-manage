@@ -12,7 +12,7 @@
                                     <div>{{role}}</div>
                                 </div>
                             </div>
-                            <div class="user-info-list">上次登录时间：<span>2018-01-01</span></div>
+                            <div class="user-info-list">上次登录时间：<span>{{loginDate}}</span></div>
                             <div class="user-info-list">上次登录地点：<span>{{LocationCity}}</span></div>
                         </el-card>
                         <el-card shadow="hover">
@@ -107,7 +107,7 @@
             this.getCity();
         },
         computed:{
-            ...mapState(['user','role'])
+            ...mapState(['user','role','loginDate'])
         },
         methods:{
             getList(){

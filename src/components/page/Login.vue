@@ -71,8 +71,13 @@
                 })
             },
             getUserInfo(loginMsg){
-              this.$store.commit('updateUserName',loginMsg.username);
-              this.$store.commit('updateUserRole',loginMsg.role);
+                this.$store.commit('updateUserName',loginMsg.username);
+                this.$store.commit('updateUserRole',loginMsg.role);
+                this.$store.commit('updateDate',this.getDate());
+            },
+            getDate(){
+                let date = new Date();
+                return date.getFullYear() + '-' + parseInt(date.getMonth() + 1) + '-' + date.getDate();
             }
         }
     }
