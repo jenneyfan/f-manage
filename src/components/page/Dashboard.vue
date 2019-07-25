@@ -221,7 +221,7 @@
     }
 
     .user-info-list span {
-        margin-left: 50px;
+        margin-left: 30px;
     }
 
     .mgb20 {

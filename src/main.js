@@ -15,7 +15,7 @@ const store = new Vuex.Store({
     state:{
         user:'admin',
         role:'系统管理员',
-        loginDate:'',
+        loginDate:'第一次登录',
         msgCount:2
     },
     mutations:{

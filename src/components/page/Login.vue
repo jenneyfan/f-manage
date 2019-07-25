@@ -52,17 +52,17 @@
                                 });
                                 if(result){
                                     if(result.password == _this.ruleForm.password){
-                                        localStorage.setItem('username',result.username);
-                                        this.$router.push('/');
-                                        this.getUserInfo(result);
+                                        _this.setLoginInfo(result);
+                                        _this.getUserInfo(result);
+                                        _this.$router.push('/');
                                     }else{
-                                        this.$message.error('密码错误，请重新输入');
+                                        _this.$message.error('密码错误，请重新输入');
                                     }
                                 }else {
-                                    this.$message.error('请检查用户名是否正确');
+                                    _this.$message.error('请检查用户名是否正确');
                                 }
                             }else{
-                                this.$message.error('服务器错误');
+                                _this.$message.error('服务器错误');
                             }
                         });
                     }else{
@@ -71,13 +71,20 @@
                 })
             },
             getUserInfo(loginMsg){
-                this.$store.commit('updateUserName',loginMsg.username);
-                this.$store.commit('updateUserRole',loginMsg.role);
-                this.$store.commit('updateDate',this.getDate());
+                this.$store.commit('updateUserName', loginMsg.username);
+                this.$store.commit('updateUserRole', loginMsg.role);
+                this.$store.commit('updateDate', localStorage.getItem('lastDate'));
             },
-            getDate(){
-                let date = new Date();
-                return date.getFullYear() + '-' + parseInt(date.getMonth() + 1) + '-' + date.getDate();
+            getLastDate(){
+                return localStorage.getItem('loginDate') || '第一次登录';
+            },
+            getThisDate(){
+                return new Date().toLocaleString();
+            },
+            setLoginInfo(result){
+                localStorage.setItem('lastDate', this.getLastDate());
+                localStorage.setItem('loginDate', this.getThisDate());
+                localStorage.setItem('username', result.username);
             }
         }
     }
